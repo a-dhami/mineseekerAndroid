@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -14,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        Button skipButton = findViewById(R.id.btn_splashskip);
+        Button skipButton = findViewById(R.id.btn_splashSkip);
         skipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -23,6 +26,15 @@ public class SplashActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Intent i = new Intent(SplashActivity.this, MenuActivity.class);
+                startActivity(i);
+                finish();
+            }
+        }, 5000);
 
         }
     }
