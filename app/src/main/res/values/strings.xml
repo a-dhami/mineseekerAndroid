@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Mineseeker</string>
+    
+    <string-array name="boardsizes">
+        <item>"4 x 6"</item>
+        <item>"5 x 10"</item>
+        <item>"6 x 15"</item>
+    </string-array>
+
+    <string-array name="numbermines">
+        <item>"6 mines"</item>
+        <item>"10 mines"</item>
+        <item>"15 mines"</item>
+    </string-array>
 </resources>

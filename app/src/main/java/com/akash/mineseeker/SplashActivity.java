@@ -17,17 +17,10 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        Button skipButton = findViewById(R.id.btn_splashSkip);
-        skipButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(SplashActivity.this, MenuActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
 
-        new Timer().schedule(new TimerTask() {
+        final Timer timer = new Timer();
+
+        timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 Intent i = new Intent(SplashActivity.this, MenuActivity.class);
@@ -35,6 +28,19 @@ public class SplashActivity extends AppCompatActivity {
                 finish();
             }
         }, 5000);
+
+        Button skipButton = findViewById(R.id.btn_splashSkip);
+        skipButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SplashActivity.this, MenuActivity.class);
+                startActivity(i);
+                timer.cancel();
+                finish();
+            }
+        });
+
+
 
         }
     }
