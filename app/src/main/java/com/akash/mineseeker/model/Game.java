@@ -1,8 +1,5 @@
-package com.akash.mineseeker;
+package com.akash.mineseeker.model;
 
-import android.util.Log;
-
-import java.util.Arrays;
 
 public class Game{
 

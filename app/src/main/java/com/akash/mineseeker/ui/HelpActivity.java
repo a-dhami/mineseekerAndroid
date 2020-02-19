@@ -1,10 +1,12 @@
-package com.akash.mineseeker;
+package com.akash.mineseeker.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.akash.mineseeker.R;
 
 public class HelpActivity extends AppCompatActivity {
 

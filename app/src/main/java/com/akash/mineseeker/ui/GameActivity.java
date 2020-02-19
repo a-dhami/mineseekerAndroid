@@ -1,6 +1,7 @@
-package com.akash.mineseeker;
+package com.akash.mineseeker.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -8,15 +9,19 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.akash.mineseeker.model.Game;
+import com.akash.mineseeker.model.GameManager;
+import com.akash.mineseeker.R;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -95,6 +100,8 @@ public class GameActivity extends AppCompatActivity {
                             //update mines found
                             updateMinesVal();
                             updateMineScanVal(FINAL_ROW,FINAL_COL);
+
+
                         }
                         else if(button.getText().length() == 0){
                             if(game.isMine(FINAL_ROW,FINAL_COL) == 2){
@@ -102,6 +109,7 @@ public class GameActivity extends AppCompatActivity {
                             }
                             button.setText(Integer.toString(game.getNearMines(FINAL_ROW,FINAL_COL)));
                             updateScanVal();
+                            scanAnimate();
                         }
                     }
                 });
@@ -109,6 +117,17 @@ public class GameActivity extends AppCompatActivity {
                 tableRow.addView(button);
             }
         }
+    }
+
+    private void scanAnimate() {
+        ImageView scanLine = findViewById(R.id.imgView_scan);
+        int width = this.getWindow().getDecorView().getWidth();
+        int height = this.getWindow().getDecorView().getHeight();
+        Animation a = new TranslateAnimation(height,width/2,0,width/2);
+        a.setDuration(500);
+        scanLine.setVisibility(View.VISIBLE);
+        scanLine.startAnimation(a);
+        scanLine.setVisibility(View.INVISIBLE);
     }
 
     private void updateScanVal() {
@@ -136,9 +155,25 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void updateMinesVal() {
-        TextView minesText = findViewById(R.id.txtview_minesFoundVal);
         game.upMinesFounds();
+        TextView minesText = findViewById(R.id.txtview_minesFoundVal);
         minesText.setText(game.getMinesFounds() + " out of " + game.getMaxMines());
+
+
+        //if all mines are found
+        if(game.getMinesFounds() == game.getMaxMines()){
+            ConstraintLayout congratsLayout = findViewById(R.id.const_congrats);
+            congratsLayout.setVisibility(View.VISIBLE);
+            Button backButton = findViewById(R.id.btn_gameBack);
+            backButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    manager.setNumPlays(manager.getNumPlays() + 1);
+                    finish();
+                }
+            });
+
+        }
     }
 
     private void lockButtonSizes() {

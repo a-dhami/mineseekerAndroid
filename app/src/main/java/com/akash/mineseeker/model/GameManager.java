@@ -1,4 +1,4 @@
-package com.akash.mineseeker;
+package com.akash.mineseeker.model;
 //this code is responsible for ensuring that the game data is retained between screens.
 
 public class GameManager {
@@ -9,6 +9,7 @@ public class GameManager {
     private int numPlays; //stores the number of times the game has been played
     private int boardVal; //stores the selected option for the board list
     private int mineVal; //stored the selected option for the mines list
+    private int ScanScore;
 
 
     private static GameManager instance;
@@ -24,6 +25,7 @@ public class GameManager {
             instance.setNumPlays(0);
             instance.setBoardVal(0);
             instance.setMineVal(0);
+            instance.setScanScore(0);
         }
         return instance;
     }
@@ -74,6 +76,14 @@ public class GameManager {
 
     public void setMineVal(int mineVal) {
         this.mineVal = mineVal;
+    }
+
+    public int getScanScore() {
+        return ScanScore;
+    }
+
+    public void setScanScore(int scanScore) {
+        ScanScore = scanScore;
     }
 }
 
