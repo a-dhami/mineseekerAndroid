@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Scanner;
 
@@ -22,7 +23,6 @@ public class OptionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
         setContentView(R.layout.activity_options);
 
         setBoardSizeSelector();
@@ -33,12 +33,6 @@ public class OptionsActivity extends AppCompatActivity {
 
         setBackButton();
 
-
-
-
-
-
-
     }
 
     private void setErasePlaysButton() {
@@ -46,20 +40,36 @@ public class OptionsActivity extends AppCompatActivity {
         eraseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Toast.makeText(getApplicationContext(), "Number of Plays : 0", Toast.LENGTH_SHORT).show();
+                manager.setNumPlays(0);
             }
         });
     }
 
     private void setNumberMineSelector() {
         Spinner mineSpinner = (Spinner) findViewById(R.id.spin_numberMines);
-        ArrayAdapter<String> mineAdapter = new ArrayAdapter<String>(OptionsActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.numbermines));
-        mineAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        final ArrayAdapter<String> mineAdapter = new ArrayAdapter<String>(OptionsActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.numbermines));
         mineSpinner.setAdapter(mineAdapter);
+        mineSpinner.setSelection(manager.getMineVal());
 
-        String data = mineSpinner.getSelectedItem().toString();
+        mineSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String data = mineAdapter.getItem(position);
 
-        //Scanner s = new Scanner(data);
-        //manager.setNumMines(s.nextInt());
+                Scanner s = new Scanner(data);
+                int mines = s.useDelimiter("[^\\d]+").nextInt();
+                manager.setNumMines(mines);
+                manager.setMineVal(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
     }
 
     private void setBackButton() {
@@ -77,7 +87,7 @@ public class OptionsActivity extends AppCompatActivity {
         final Spinner sizeSpinner = (Spinner) findViewById(R.id.spin_boardSize);
         final ArrayAdapter<String> boardSizeAdapter = new ArrayAdapter<String>(OptionsActivity.this, android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.boardsizes));
         sizeSpinner.setAdapter(boardSizeAdapter);
-
+        sizeSpinner.setSelection(manager.getBoardVal());
         sizeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -87,6 +97,7 @@ public class OptionsActivity extends AppCompatActivity {
                 int col = s.useDelimiter("[^\\d]+").nextInt();
                 manager.setRowVal(row);
                 manager.setColVal(col);
+                manager.setBoardVal(position);
             }
 
             @Override

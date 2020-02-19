@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Mineseeker</string>
-    
+    <string name="string_scansused"># of Scans used:</string>
+
     <string-array name="boardsizes">
         <item>"4 x 6"</item>
         <item>"5 x 10"</item>
