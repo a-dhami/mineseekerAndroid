@@ -2,6 +2,7 @@
     <string name="app_name">Mineseeker</string>
     <string name="string_scansused"># of Scans used:</string>
     <string name="string_foundMines">Found Mines:</string>
+    <string name="string_help">The objective of this game is to find all the mines while using the least amount of scans possible. Upon clicking on a potential mine, it will disclose if that location inhabits a mine or it will disclose the number of mines present in that column and row, which can be used to determine the location of the mines in the map.</string>
 
     <string-array name="boardsizes">
         <item>"4 x 6"</item>
