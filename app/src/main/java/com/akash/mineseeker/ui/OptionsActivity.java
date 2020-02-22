@@ -51,7 +51,7 @@ public class OptionsActivity extends AppCompatActivity {
                 manager.setNumPlays(0);
                 TextView numPlay = findViewById(R.id.txtview_numPlay);
                 numPlay.setText(Integer.toString(manager.getNumPlays()));
-                updatePersistance();
+                updatePersistence();
             }
         });
     }
@@ -71,7 +71,6 @@ public class OptionsActivity extends AppCompatActivity {
                 int mines = s.useDelimiter("[^\\d]+").nextInt();
                 manager.setNumMines(mines);
                 manager.setMineVal(position);
-                updatePersistance();
             }
 
             @Override
@@ -88,7 +87,7 @@ public class OptionsActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updatePersistance();
+                updatePersistence();
                 finish();
             }
         });
@@ -109,7 +108,6 @@ public class OptionsActivity extends AppCompatActivity {
                 manager.setRowVal(row);
                 manager.setColVal(col);
                 manager.setBoardVal(position);
-                updatePersistance();
             }
 
             @Override
@@ -121,7 +119,7 @@ public class OptionsActivity extends AppCompatActivity {
 
     }
 
-    private void updatePersistance() {
+    private void updatePersistence() {
         SharedPreferences sharedPref = getSharedPreferences("GameData", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putInt("NumberPlays", manager.getNumPlays());
@@ -129,5 +127,12 @@ public class OptionsActivity extends AppCompatActivity {
         editor.putInt("MapRow", manager.getRowVal());
         editor.putInt("MapCol", manager.getColVal());
         editor.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        updatePersistence();
+        this.finish();
     }
 }

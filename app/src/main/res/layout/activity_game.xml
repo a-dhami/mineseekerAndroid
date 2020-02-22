@@ -28,7 +28,7 @@
             android:text="@string/string_congrats"
             android:textAlignment="center"
             android:textColor="#E91E63"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -49,6 +49,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtview_Congrats" />
+
+        <ImageView
+            android:id="@+id/img_krabbypatty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btn_gameBack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtview_Congrats"
+            app:srcCompat="@mipmap/krabby_patty" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

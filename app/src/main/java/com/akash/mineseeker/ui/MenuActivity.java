@@ -29,10 +29,14 @@ public class MenuActivity extends AppCompatActivity {
         int mines = sharedPref.getInt("Mines", 6);
         int mapRow = sharedPref.getInt("MapRow", 4);
         int mapCol = sharedPref.getInt("MapCol", 6);
+        if(mines >= 6)
+        {
+            manager.setNumMines(mines);
+        }
         manager.setNumPlays(numberPlays);
         manager.setRowVal(mapRow);
         manager.setColVal(mapCol);
-        manager.setNumMines(mines);
+
 
 
         Button helpButton = findViewById(R.id.btn_menuHelp);
@@ -62,4 +66,13 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
+
 }
+
+
