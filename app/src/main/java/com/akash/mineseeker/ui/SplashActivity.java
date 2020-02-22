@@ -43,7 +43,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-        }, 7000);
+        }, 8500);
 
         Button skipButton = findViewById(R.id.btn_splashSkip);
         skipButton.setOnClickListener(new View.OnClickListener() {

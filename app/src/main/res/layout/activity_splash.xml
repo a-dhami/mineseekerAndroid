@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/splash_back"
     tools:context=".ui.SplashActivity">
 
     <TextView
@@ -49,12 +50,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerInside"
-        android:scaleX=".5"
-        android:scaleY=".5"
+        android:scaleX=".75"
+        android:scaleY=".75"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mine" />
+        app:srcCompat="@drawable/krabby_patty" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

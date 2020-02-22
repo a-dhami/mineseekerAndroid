@@ -2,12 +2,14 @@ package com.akash.mineseeker.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.akash.mineseeker.model.GameManager;
@@ -34,6 +36,9 @@ public class OptionsActivity extends AppCompatActivity {
 
         setBackButton();
 
+        TextView numPlay = findViewById(R.id.txtview_numPlay);
+        numPlay.setText(Integer.toString(manager.getNumPlays()));
+
     }
 
     private void setErasePlaysButton() {
@@ -44,6 +49,9 @@ public class OptionsActivity extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(), "Number of Plays : 0", Toast.LENGTH_SHORT).show();
                 manager.setNumPlays(0);
+                TextView numPlay = findViewById(R.id.txtview_numPlay);
+                numPlay.setText(Integer.toString(manager.getNumPlays()));
+                updatePersistance();
             }
         });
     }
@@ -63,6 +71,7 @@ public class OptionsActivity extends AppCompatActivity {
                 int mines = s.useDelimiter("[^\\d]+").nextInt();
                 manager.setNumMines(mines);
                 manager.setMineVal(position);
+                updatePersistance();
             }
 
             @Override
@@ -79,6 +88,7 @@ public class OptionsActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                updatePersistance();
                 finish();
             }
         });
@@ -99,6 +109,7 @@ public class OptionsActivity extends AppCompatActivity {
                 manager.setRowVal(row);
                 manager.setColVal(col);
                 manager.setBoardVal(position);
+                updatePersistance();
             }
 
             @Override
@@ -108,5 +119,15 @@ public class OptionsActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void updatePersistance() {
+        SharedPreferences sharedPref = getSharedPreferences("GameData", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt("NumberPlays", manager.getNumPlays());
+        editor.putInt("Mines", manager.getMineVal());
+        editor.putInt("MapRow", manager.getRowVal());
+        editor.putInt("MapCol", manager.getColVal());
+        editor.commit();
     }
 }

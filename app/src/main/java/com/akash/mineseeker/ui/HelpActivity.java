@@ -3,8 +3,10 @@ package com.akash.mineseeker.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.akash.mineseeker.R;
 
@@ -22,5 +24,10 @@ public class HelpActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        TextView mLink = (TextView) findViewById(R.id.txtview_link);
+        if (mLink != null) {
+            mLink.setMovementMethod(LinkMovementMethod.getInstance());
+        }
     }
 }

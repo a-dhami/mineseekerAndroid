@@ -1,8 +1,13 @@
 <resources>
-    <string name="app_name">Mineseeker</string>
+    <string name="app_name">Krabby Finder</string>
     <string name="string_scansused"># of Scans used:</string>
-    <string name="string_foundMines">Found Mines:</string>
-    <string name="string_help">The objective of this game is to find all the mines while using the least amount of scans possible. Upon clicking on a potential mine, it will disclose if that location inhabits a mine or it will disclose the number of mines present in that column and row, which can be used to determine the location of the mines in the map.</string>
+    <string name="string_foundMines">Found Patties:</string>
+    <string name="string_help">Plankton has once again tried stealing the krabby patty to obtain the secret formula. Your objective is to look for all the missing Krabby Patties with the help of the Krabby Patty scanner. Each cell will either contain a scanner which will display the number of Krabby Patties in that row and column, or if you are lucky, an entire Krabby Patty that Plankton has stolen. Your goal is to find all the Krabby Patties with the help of the least amount of scanners.  Good luck.</string>
+    <string name="string_options">Options</string>
+    <string name="string_board_size">Board Size:</string>
+    <string name="string_numberof">Number of Patties:</string>
+    <string name="string_numplays">Erase Times Played</string>
+    <string name="string_back">Back</string>
 
     <string-array name="boardsizes">
         <item>"4 x 6"</item>
@@ -11,9 +16,16 @@
     </string-array>
 
     <string-array name="numbermines">
-        <item>"6 mines"</item>
-        <item>"10 mines"</item>
-        <item>"15 mines"</item>
-        <item>"20 mines"</item>
+        <item>"6 patties"</item>
+        <item>"10 patties"</item>
+        <item>"15 patties"</item>
+        <item>"20 patties"</item>
     </string-array>
+
+    <string name="link"><a href="https://opencoursehub.cs.sfu.ca/bfraser/grav-cms/cmpt276/">CMPT 276</a></string>
+    <string name="string_helptitle">Help</string>
+    <string name="string_author">This application was created by Akash Dhami as a submission for Assignment 3 for</string>
+    <string name="string_copyright">All Spongebob Squarepants content present in this application including but not limited to text, images, and audio-visual content is the respective property of Nickelodeon 2020, and has been used for educational purposes only for this class.</string>
+    <string name="string_congrats">Congratulations! You found all of the Patties!</string>
+    <string name="string_numberPlays">Number of Plays:</string>
 </resources>

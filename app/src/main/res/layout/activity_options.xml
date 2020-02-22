@@ -5,6 +5,7 @@
     android:id="@+id/btn_eraseScore"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/splash_back"
     tools:context=".ui.OptionsActivity">
 
     <TextView
@@ -25,7 +26,7 @@
         android:id="@+id/txtview_optionTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Options"
+        android:text="@string/string_options"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,8 +38,7 @@
         android:id="@+id/txtview_boardSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:autoText="false"
-        android:text="           Board Size:"
+        android:text="@string/string_board_size"
         android:textAlignment="textEnd"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,31 +46,55 @@
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtview_optionTxt"
-        app:layout_constraintVertical_bias="0.15" />
+        app:layout_constraintVertical_bias="0.18" />
 
     <TextView
         android:id="@+id/txtview_numberMines"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number of Mines:"
+        android:text="@string/string_numberof"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtview_boardSize"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.23000002" />
+
+    <TextView
+        android:id="@+id/txtview_numberPlays"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/string_numberPlays"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtview_boardSize" />
+
+    <TextView
+        android:id="@+id/txtview_numPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="0"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtview_numberPlays"
+        app:layout_constraintTop_toBottomOf="@+id/txtview_boardSize" />
 
     <Button
         android:id="@+id/btn_erasePlays"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Erase Times Played"
+        android:text="@string/string_numplays"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtview_numberMines" />
+        app:layout_constraintTop_toBottomOf="@+id/txtview_numberMines"
+        app:layout_constraintVertical_bias="0.75" />
 
     <Spinner
         android:id="@+id/spin_boardSize"
@@ -98,12 +122,12 @@
         android:id="@+id/btn_optionsBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back"
+        android:text="@string/string_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_erasePlays"
         app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtview_numberMines"
-        app:layout_constraintVertical_bias=".5" />
+        app:layout_constraintVertical_bias="0.75" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

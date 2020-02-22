@@ -3,6 +3,7 @@ package com.akash.mineseeker.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -39,12 +40,32 @@ public class GameActivity extends AppCompatActivity {
         game = new Game();
         game.newGame(); //game new initialization
 
+        //increment number of plays
+        manager.upNumPlays();
+
+        SharedPreferences sharedPref = getSharedPreferences("GameData", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putInt("NumberPlays", manager.getNumPlays());
+        editor.putInt("Mines", manager.getMineVal());
+        editor.putInt("MapRow", manager.getRowVal());
+        editor.putInt("MapCol", manager.getColVal());
+        editor.commit();
+
         populateMines();
 
         updateMinesVal(); //initialize to 0
 
         updateScanVal(); //initialize to 0
+
+        Button backMain = findViewById(R.id.btn_gameBack2);
+        backMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
+
 
     public void onBackPressed(){
         finish();
@@ -92,7 +113,7 @@ public class GameActivity extends AppCompatActivity {
                             lockButtonSizes();
                             int newWidth = button.getWidth();
                             int newHeight = button.getHeight();
-                            Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.mine);
+                            Bitmap originalBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.krabby_patty);
                             Bitmap scaledBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth, newHeight, true);
                             Resources resource = getResources();
                             button.setBackground(new BitmapDrawable(resource, scaledBitmap));

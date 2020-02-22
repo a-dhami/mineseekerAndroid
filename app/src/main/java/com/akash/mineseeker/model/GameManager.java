@@ -58,6 +58,10 @@ public class GameManager {
         return numPlays;
     }
 
+    public void upNumPlays() {
+        this.numPlays++;
+    }
+
     public void setNumPlays(int numPlays) {
         this.numPlays = numPlays;
     }
