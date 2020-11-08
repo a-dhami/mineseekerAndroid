@@ -1,8 +1,8 @@
-[15] Optional Features
-	List them in your docs/readme.txt file, as described in the assignment document.
-	[ 5] Welcome screen: animation
-	[10] Game: Scanning animation along row/column when scanning for mines
-	[10] Display & Save # games started (total), and best score between launches.
-	     - Options screen able to reset number games played to 0, and clear all high scores.
-	     - Only able to implement number of games played and store board/mine information between
-	     launches.
+mineseeker
+
+An android game programmed in Android Studio, that essentially requires the user to find a number of mines
+with the least number of moves possible. 
+
+The application includes the ability to save progress, high scores, and also features 
+differing levels of difficulty. 
+
